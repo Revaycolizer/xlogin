@@ -2,9 +2,38 @@
   <div class="q-pa-md">
     <q-layout view="hHh Lpr lff" container style="height: 300px" class="shadow-2 rounded-borders">
       <q-header elevated class="bg-black">
-        <q-toolbar>
+        <q-toolbar class="bg-grey">
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
-          <q-toolbar-title>Home</q-toolbar-title>
+          <q-toolbar-title><q-btn flat><router-link to="/home">Home</router-link></q-btn></q-toolbar-title>
+          <q-space/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          
+          <q-space/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-space/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-separator inset spaced/>
+          <q-space/>
+
+          <q-toolbar-title><q-btn flat><router-link to="/">Sign out</router-link></q-btn></q-toolbar-title>
         </q-toolbar>
       </q-header>
 
