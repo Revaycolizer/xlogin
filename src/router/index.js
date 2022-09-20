@@ -1,11 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import HelpView from '../views/HelpView.vue'
+import ErrorView from '../views/ErrorView.vue'
+import HomeDash from '../views/HomeDash.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/help',
+    name: 'help',
+    component: HelpView
+  },
+  {
+    path: '/home',
+    name: 'dash',
+    component: HomeDash
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'error',
+    component: ErrorView
   },
   {
     path: '/about',
