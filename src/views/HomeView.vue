@@ -29,8 +29,11 @@
       </q-input>
       <q-btn label="Sign in" type="submit" color="primary"/>
       <q-space/>
-      <div align=left><router-link to="/help">Forget Password</router-link></div>
-      <div align=right><router-link to="/create">Create New Account</router-link></div>
+      <q-toolbar flat>
+      <router-link to="/help">Forget Password</router-link>
+      <q-space/>
+      <router-link to="/create">Create New Account</router-link>
+      </q-toolbar>
 
   
 </q-form>
