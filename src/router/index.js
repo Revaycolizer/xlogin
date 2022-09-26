@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import HelpView from '../views/HelpView.vue'
 import ErrorView from '../views/ErrorView.vue'
 import HomeDash from '../views/HomeDash.vue'
+import DashBoard from '../views/DashBoard.vue'
+import AccountView from '../views/AccountView.vue'
 
 const routes = [
   {
@@ -14,6 +16,16 @@ const routes = [
     path: '/help',
     name: 'help',
     component: HelpView
+  },
+  {
+    path: '/create',
+    name: 'create',
+    component: AccountView
+  },
+  {
+    path: '/dash',
+    name: 'dashboard',
+    component: DashBoard
   },
   {
     path: '/home',
