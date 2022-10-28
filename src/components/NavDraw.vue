@@ -4,7 +4,7 @@
       <q-header elevated class="bg-black">
         <q-toolbar class="bg-blue">
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
-          <q-toolbar-title><q-btn flat><router-link to="/home">Home</router-link></q-btn></q-toolbar-title>
+          <q-toolbar-title><q-btn flat><router-link to="/">Home</router-link></q-btn></q-toolbar-title>
           <q-space/>
           <q-separator inset spaced/>
           <q-separator inset spaced/>
@@ -55,9 +55,7 @@
           <q-list padding>
             <q-item clickable v-ripple>
               <q-item-section avatar>
-                <router-link to="/dash">
                 <q-icon name="dashboard" color="blue" />
-                </router-link>
               </q-item-section>
 
               <q-item-section>
@@ -106,22 +104,7 @@
 </q-card>
 
       <q-page-container>
-        <q-page >
-        <q-card class="my-card" flat bordered>
-      <q-card-section horizontal>
-        <q-card-section>
-          <h1 class="text-h3">Your Profile</h1>
-          <p>All members credentials are found in this section and all things required are conntained in here, all people having membership are able to access everything found in here freely</p>
-          <q-btn align="center" rounded><router-link to="/dash">Edit profile</router-link></q-btn>
-        </q-card-section>
-
-        <q-img
-          class="col-5"
-          src="../assets/uni.png"
-          style="max-width: 250px"
-        />
-      </q-card-section>
-    </q-card>
+        <q-page padding>
            
         </q-page>
       </q-page-container>
@@ -131,7 +114,6 @@
 
 <script>
 import {  ref } from 'vue'
-import lb from '../assets/download.jpeg'
 import bg from '../assets/logo.svg'
 // import { useStore } from 'vuex'
 
@@ -147,7 +129,6 @@ export default {
       drawer: ref(false),
       miniState: ref(true),
       bg:bg,
-      lb:lb
       
 
     //   user: computed(()=> store.state.user)
@@ -155,8 +136,3 @@ export default {
   }
 }
 </script>
-<style lang="sass" scoped>
-.my-card
-  width: 100%
-  max-width: 1450px
-</style>

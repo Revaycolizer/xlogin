@@ -5,6 +5,7 @@ import ErrorView from '../views/ErrorView.vue'
 import HomeDash from '../views/HomeDash.vue'
 import DashBoard from '../views/DashBoard.vue'
 import AccountView from '../views/AccountView.vue'
+import NotesView from '../views/NotesView.vue'
 
 const routes = [
   {
@@ -16,6 +17,11 @@ const routes = [
     path: '/help',
     name: 'help',
     component: HelpView
+  },
+  {
+    path: '/notes',
+    name: 'notes',
+    component: NotesView
   },
   {
     path: '/create',

@@ -1,13 +1,14 @@
 <template>
   <div class="home">
     <q-card align="center" flat>
-    <q-card class="my-card">
+    <q-card style="max-width: 500px">
     
       
       
-    <q-form action="https://some-url.com" @submit.prevent="Login" method="post" ref="myForm">
+    <q-form @submit.prevent="handleSubmit">
     <h4>Login</h4>
     <img :src="image">
+   
     
    <q-input
    square clearable
@@ -15,7 +16,7 @@
         v-model="email"
         label="Your email *"
         hint="email"
-        suffix="@gmail.com"
+        
         lazy-rules
         :rules="[ val => val && val.length > 0 || 'Please type something']"
       ><template v-slot:prepend>
@@ -45,6 +46,8 @@
       <router-link to="/create">Create New Account</router-link>
       </q-toolbar>
 
+      <div v-if="error"> {{ error }} </div>
+
   
 </q-form>
     
@@ -58,16 +61,50 @@
 // @ is an alias to /src
 import {ref} from 'vue'
 import image from '../assets/login.jpg'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+
+
+
+
 
 
 export default {
-  
+   
     setup () {
-    return {
-      password: ref(''),
-      isPwd: ref(true),
-      image:image
+
       
+     const error = ref(null)
+      const email = ref(null);
+      const password = ref(null);
+      const errMsg = ref(null);
+      const isPwd = ref(null);
+
+       const store = useStore()
+    const router = useRouter()
+
+    const handleSubmit = async () =>{
+     try{
+     await store.dispatch('login', {
+        email: email.value,
+        password: password.value
+      })
+      router.push('/home')
+     } catch (err){
+      error.value = err.message
+
+     }
+    }
+
+
+    return {
+      password,
+      isPwd,
+      image:image,
+      errMsg,
+      email,
+      error,
+      handleSubmit
       
     }
     }
@@ -77,6 +114,6 @@ export default {
 </script>
 <style lang="sass">
 .my-card
-  width: 100%
-  max-width: 450px
+  width: 10%
+  max-width: 1200px
 </style>

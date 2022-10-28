@@ -4,29 +4,19 @@
         <q-card class="card"
         align="center" flat>
           <h5>Register</h5>
+          <q-card class="my-card" flat>
+          <img :src="person"/>
+          </q-card>
           <q-card align="center" >
             <!-- <div v-if="error" class="alert alert-danger">{{error}}</div> -->
-            <q-form action="#" @submit.prevent="Register" style="max-width:450px">
-          <q-input
-          square clearable
-        filled
-        v-model="name"
-        label="First name and last name *"
-        hint="name"
-        lazy-rules
-        :rules="[ val => val && val.length > 0 || 'Please type something']"
-      ><template v-slot:prepend>
-                  <q-icon name="person" />
-                </template>
-          </q-input>
-
+            <q-form action="#" @submit.prevent="handleSubmit" style="max-width:450px">
               
        <q-input
         filled
         v-model="email"
         label="Your email *"
         hint="email"
-        suffix="@gmail.com"
+
         lazy-rules
         :rules="[ val => val && val.length > 0 || 'Please type something']"
       ><template v-slot:prepend>
@@ -34,16 +24,6 @@
         </template>
         </q-input>
         
-
-        <q-input
-        filled
-        v-model="dob"
-        label="Date of Birth *"
-        hint="Date of Birth"
-       ><template v-slot:prepend>
-                  <q-icon name="book" />
-                </template>
-        </q-input>
 
        <q-input square clearable v-model="password" filled :type="isPwd ? 'password' : 'text'" hint="Password">
         <template v-slot:prepend>
@@ -64,6 +44,7 @@
 
               
                   <q-btn type="submit" color="green">Register</q-btn>
+                  <div v-if="error">{{ error }}</div>
               
             </q-form>
           </q-card>
@@ -73,36 +54,46 @@
 
 
 <script>
+import person from '../assets/person.png'
 import { ref } from 'vue'
-// import { useStore } from 'vue'
-// import { useRouter } from 'vue-router'
+
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
 export default {
   name: "RegisterComponent",
  setup() {
-    const name = ref('')
+   
     const email = ref('')
     const password = ref('')
     const error = ref(null)
+    const isPwd = ref(null)
+    
+    
 
-    // const store = useStore()
-    // const router = useRouter()
+    const store = useStore()
+    const router = useRouter()
 
-    // const Register = async () => {
-    //   try {
-    //     await store.dispatch('register', {
-    //       email: email.value,
-    //       password: password.value,
-    //       name: name.value
-    //     })
-    //     router.push('/')
-    //   }
-    //   catch (err) {
-    //     error.value = err.message
-    //         }
-    // }
+    const handleSubmit = async () =>{
+     try{
+     await store.dispatch('signup', {
+        email: email.value,
+        password: password.value
+      })
+      router.push('/home')
+     } catch (err){
+      error.value = err.message
 
-    return {  name,email, password, error, }
+     }
+    }
+    
+
+    return {  handleSubmit,email, password, error, isPwd, person}
   }
 };
 </script>
+<style lang="sass">
+.my-card
+  width: 10%
+  max-width: 450px
+</style>
