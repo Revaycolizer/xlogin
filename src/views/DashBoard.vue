@@ -196,11 +196,11 @@
 <q-toolbar>
     <q-card class="my-cre bg-orange">
       <p align="center" class="text-h4 text-black">Payment Details</p>
-      <h1 class="text-h6 text-white">All fees are paid in this account number:</h1> 
-      Account Number:<br />
-      20510018688 <br />
-      Account Name: <br />
-      DMI and Collaborators Trust
+      <h1 class="text-h6 text-white" align="center">All fees are paid in this account number:</h1> 
+      <p align="center">Account Number: 20510018688</p>
+      <p align="center">
+      Account Name: DMI and Collaborators Trust
+      </p>
       <q-space />
       <q-toolbar>
         <q-separator inset spaced />
@@ -216,8 +216,8 @@
 
     <q-card class="my-cre bg-blue" >
       <p align="center" class="text-h4 text-white">Assignments</p>
-      <h1 class="text-h6">All assignments are provided by a respective lecturer </h1> 
-      To view your progress click below
+      <h1 class="text-h6" align="center">All assignments are provided by a respective lecturer </h1> 
+      <p align="center">To view your progress click below</p>
       <q-space />
       <q-toolbar>
         <q-separator inset spaced />
@@ -232,8 +232,7 @@
 
     <q-card class="my-cre bg-pink" >
       <p align="center" class="text-h4 text-orange">Results</p>
-      <h1 class="text-h6">Results are provided at each end of semister </h1> 
-      To view your results click below
+      <h1 class="text-h6" align="center">Results are provided at each end of semister <br/>To view your results click below</h1> 
       <q-space />
       <q-toolbar>
         <q-separator inset spaced />
