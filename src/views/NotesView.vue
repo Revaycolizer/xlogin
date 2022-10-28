@@ -59,7 +59,7 @@
               </q-item-section>
 
               <q-item-section>
-                  <router-link to="/dash">
+                  <router-link style="text-decoration:none;" to="/dash">
                 Dashboard
                   </router-link>
               </q-item-section>
@@ -71,7 +71,7 @@
               </q-item-section>
 
               <q-item-section>
-                <router-link to="/notes">
+                <router-link style="text-decoration:none;" to="/notes">
                 Notes
                 </router-link>
               </q-item-section>
