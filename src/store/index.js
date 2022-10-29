@@ -8,6 +8,7 @@ import {
     onAuthStateChanged
 
 } from 'firebase/auth'
+import { getDatabase } from "firebase/database"
 
 const store = createStore({
     state: {
