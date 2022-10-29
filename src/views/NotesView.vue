@@ -4,7 +4,7 @@
       <q-header elevated class="bg-black">
         <q-toolbar class="bg-blue">
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
-          <q-toolbar-title><q-btn flat><router-link to="/home">Home</router-link></q-btn></q-toolbar-title>
+          <q-toolbar-title><q-btn :ripple="false" flat><router-link style="text-decoration:none;" to="/home">Home</router-link></q-btn></q-toolbar-title>
           <q-space/>
           <q-separator inset spaced/>
           <q-separator inset spaced/>
@@ -33,7 +33,7 @@
           <q-separator inset spaced/>
           <q-space/>
 
-          <q-toolbar-title><q-btn @click="handleClick" flat><router-link to="/">Sign out</router-link></q-btn></q-toolbar-title>
+          <q-toolbar-title><q-btn :ripple="false" @click="handleClick" flat><router-link style="text-decoration:none;" to="/">Sign out</router-link></q-btn></q-toolbar-title>
         </q-toolbar>
       </q-header>
 <q-card style="max-width: 300px">
@@ -55,7 +55,23 @@
           <q-list padding>
             <q-item clickable v-ripple>
               <q-item-section avatar>
+                <router-link style="text-decoration:none;" to="/home">
+                <q-icon name="home" color="blue" />
+                </router-link>
+              </q-item-section>
+
+              <q-item-section>
+                  <router-link style="text-decoration:none;" to="/home">
+                   Home
+                  </router-link>
+              </q-item-section>
+            </q-item>
+            
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <router-link to="/dash">
                 <q-icon name="dashboard" color="blue" />
+                </router-link>
               </q-item-section>
 
               <q-item-section>
@@ -67,7 +83,9 @@
 
             <q-item active clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="books" />
+                <router-link to="/notes">
+                <q-icon color="blue" name="books" />
+                </router-link>
               </q-item-section>
 
               <q-item-section>

@@ -4,7 +4,7 @@
       <q-header elevated class="bg-black">
         <q-toolbar class="bg-blue">
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
-          <q-toolbar-title><q-btn flat><router-link to="/home">Home</router-link></q-btn></q-toolbar-title>
+          <q-toolbar-title><q-btn :ripple="false" flat><router-link style="text-decoration:none;" to="/home">Home</router-link></q-btn></q-toolbar-title>
           <q-space/>
           <q-separator inset spaced/>
           <q-separator inset spaced/>
@@ -33,7 +33,7 @@
           <q-separator inset spaced/>
           <q-space/>
 
-          <q-toolbar-title><q-btn @click="handleClick" flat><router-link to="/">Sign out</router-link></q-btn></q-toolbar-title>
+          <q-toolbar-title><q-btn @click="handleClick" :ripple="false" flat><router-link style="text-decoration:none;"  to="/">Sign out</router-link></q-btn></q-toolbar-title>
         </q-toolbar>
       </q-header>
 <q-card style="max-width: 300px">
@@ -53,6 +53,20 @@
       >
         <q-scroll-area class="fit">
           <q-list padding>
+             <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <router-link style="text-decoration:none;" to="/home">
+                <q-icon name="home" color="blue" />
+                </router-link>
+              </q-item-section>
+
+              <q-item-section>
+                  <router-link style="text-decoration:none;" to="/home">
+                   Home
+                  </router-link>
+              </q-item-section>
+            </q-item>
+
             <q-item clickable v-ripple>
               <q-item-section avatar>
                 <router-link style="text-decoration:none;" to="/dash">
@@ -69,7 +83,9 @@
 
             <q-item active clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="books" />
+                 <router-link to="/notes">
+                <q-icon color="blue" name="books" />
+                </router-link>
               </q-item-section>
 
               <q-item-section>
@@ -116,7 +132,46 @@
           <q-btn label="Edit Profile" color="primary" rounded @click="inception = true" />
           <q-separator inset spaced/>
           
-          <q-btn  rounded>View profile </q-btn>
+          <q-btn @click="profile = true" rounded>View profile </q-btn>
+          <q-dialog v-model="profile">
+      <q-card class="my-prof">
+        <q-card-section>
+          <div class="text-h6">Profile</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+         <q-input label="name" >
+          <template v-slot:prepend>
+            <q-icon name="person"/>
+          </template>
+         </q-input>
+
+         <q-input label="registration number" >
+          <template v-slot:prepend>
+            <q-icon name="laptop"/>
+          </template>
+         </q-input>
+
+         <q-input label="course" >
+          <template v-slot:prepend>
+            <q-icon name="book"/>
+          </template>
+         </q-input>
+         
+         <q-input label="Phone number" >
+          <template v-slot:prepend>
+            <q-icon name="call"/>
+          </template>
+         </q-input>
+         
+
+        </q-card-section>
+
+        <q-card-actions align="right" class="text-primary">
+          <q-btn flat label="Close" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
           </q-toolbar>
 
               <q-dialog v-model="inception">
@@ -154,7 +209,7 @@
         </q-card-section>
 
         <q-card-actions align="right" class="text-primary">
-          <q-btn flat label="Save Profile" @click="secondDialog = true" />
+          <q-btn flat label="Save Profile" @click="saveProfile" />
           <q-btn flat label="Close" v-close-popup />
         </q-card-actions>
       </q-card>
@@ -232,7 +287,7 @@
 
     <q-card class="my-cre bg-pink" >
       <p align="center" class="text-h4 text-orange">Results</p>
-      <h1 class="text-h6" align="center">Results are provided at each end of semister <br/>To view your results click below</h1> 
+      <h1 class="text-h6" align="center">Results are provided at each end of semister. <br/></h1><p align="center">To view your results click below</p> 
       <q-space />
       <q-toolbar>
         <q-separator inset spaced />
@@ -263,6 +318,12 @@ import bg from '../assets/logo.svg'
 //   store.dispatch('logout')
 // }
 
+
+   const saveProfile = () =>{
+    // console.log('saved')
+    // store.dispatch('saved')
+   }
+
 export default {
   setup () {
     return {
@@ -271,7 +332,9 @@ export default {
       bg:bg,
       lb:lb,
       inception: ref(false),
-      secondDialog: ref(false) 
+      secondDialog: ref(false),
+      profile: ref(false),
+      saveProfile
 
     
       
