@@ -4,36 +4,6 @@
       <q-header elevated class="bg-black">
         <q-toolbar class="bg-blue">
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
-          <q-toolbar-title><q-btn :ripple="false" flat><router-link style="text-decoration:none;" to="/home">Home</router-link></q-btn></q-toolbar-title>
-          <q-space/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          
-          <q-space/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-space/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-space/>
-
-          <q-toolbar-title><q-btn :ripple="false" @click="handleClick" flat><router-link style="text-decoration:none;" to="/">Sign out</router-link></q-btn></q-toolbar-title>
         </q-toolbar>
       </q-header>
 <q-card style="max-width: 300px">
@@ -95,27 +65,20 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item active clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="image" color="blue" />
+                <router-link to="/">
+                <q-icon @click="handleClick" color="blue" name="logout" />
+                </router-link>
               </q-item-section>
 
               <q-item-section>
-                Project Images
+                <router-link @click="handleClick" style="text-decoration:none;" to="/">
+                Sign Out
+                </router-link>
               </q-item-section>
             </q-item>
 
-            <q-separator />
-
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="drafts" />
-              </q-item-section>
-
-              <q-item-section>
-                Drafts
-              </q-item-section>
-            </q-item>
           </q-list>
         </q-scroll-area>
       </q-drawer>
@@ -123,20 +86,29 @@
 
       <q-page-container>
         <q-page >
-        <q-card class="my-card" flat bordered>
+        <q-card class="my-card" flat>
       <q-card-section horizontal>
         <q-card-section>
-          <h1 class="text-h3">Your Profile</h1>
-          <p>All members credentials are found in this section and all things required are conntained in here, all people having membership are able to access everything found in here freely</p>
+          <h1 class="text-h3">Notes</h1>
+          <p>Studying materials are available in the library</p>
+          <p>For notes and module insight click below</p>
+          <q-btn @click="notes=true" flat> View</q-btn>
         </q-card-section>
-
-        <q-img
-          class="col-5"
-          src="../assets/download.jpeg"
-        />
       </q-card-section>
     </q-card>
-           
+
+    <q-dialog v-model="notes" transition-show="scale" transition-hide="scale">
+      <q-card class="my-cad">
+      <q-card-section>
+        <p>CSE</p>
+        <template v-slot:prepend>
+        <q-icon name="laptop"/>
+        </template>
+        
+      </q-card-section>
+      </q-card>
+
+    </q-dialog>       
         </q-page>
       </q-page-container>
     </q-layout>
@@ -144,16 +116,16 @@
 </template>
 
 <script>
-import {  ref } from 'vue'
+import {  computed, ref } from 'vue'
 import lb from '../assets/download.jpeg'
 import bg from '../assets/logo.svg'
-// import { useStore } from 'vuex'
+import { useStore } from 'vuex'
 
-// const store = useStore()
+const store = useStore()
 
-// const handleClick = () => {
-//   store.dispatch('logout')
-// }
+const handleClick = () => {
+  store.dispatch('logout')
+}
 
 export default {
   setup () {
@@ -161,15 +133,20 @@ export default {
       drawer: ref(false),
       miniState: ref(true),
       bg:bg,
-      lb:lb
+      lb:lb,
+      handleClick,
+      notes:ref(false),
       
 
-    //   user: computed(()=> store.state.user)
+      user: computed(()=> store.state.user)
     }
   }
 }
 </script>
 <style lang="sass" scoped>
+.my-cad
+  width: 100%
+  max-width: 450px
 .my-card
   width: 100%
   max-width: 1450px

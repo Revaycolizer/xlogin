@@ -4,36 +4,6 @@
       <q-header elevated class="bg-black">
         <q-toolbar class="bg-blue">
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
-          <q-toolbar-title><q-btn :ripple="false" flat><router-link style="text-decoration:none;" to="/home">Home</router-link></q-btn></q-toolbar-title>
-          <q-space/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          
-          <q-space/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-space/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-space/>
-
-          <q-toolbar-title><q-btn @click="handleClick" :ripple="false" flat><router-link style="text-decoration:none;" to="/">Sign out</router-link></q-btn></q-toolbar-title>
         </q-toolbar>
       </q-header>
 <q-card style="max-width: 300px">
@@ -53,7 +23,7 @@
       >
         <q-scroll-area class="fit">
           <q-list padding>
-            <q-item clickable v-ripple>
+             <q-item clickable v-ripple>
               <q-item-section avatar>
                 <router-link style="text-decoration:none;" to="/home">
                 <q-icon name="home" color="blue" />
@@ -66,7 +36,7 @@
                   </router-link>
               </q-item-section>
             </q-item>
-            
+
             <q-item clickable v-ripple>
               <q-item-section avatar>
                 <router-link style="text-decoration:none;" to="/dash">
@@ -95,27 +65,22 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            
+            <q-item active clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="image" color="blue" />
+                <router-link to="/">
+                <q-icon @click="handleClick" color="blue" name="logout" />
+                </router-link>
               </q-item-section>
 
               <q-item-section>
-                Project Images
+                <router-link @click="handleClick" style="text-decoration:none;" to="/">
+                Sign Out
+                </router-link>
               </q-item-section>
             </q-item>
 
-            <q-separator />
-
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="drafts" />
-              </q-item-section>
-
-              <q-item-section>
-                Drafts
-              </q-item-section>
-            </q-item>
+            
           </q-list>
         </q-scroll-area>
       </q-drawer>
@@ -123,64 +88,126 @@
 
       <q-page-container>
         <q-page >
-        <q-card class="my-card" flat bordered>
+      <q-card class="my-card">
       <q-card-section horizontal>
-        <q-card-section>
-          <h1 class="text-h3">Welcome Again</h1>
-        <p class="text-h4" >News/Events</p>
-         
-        </q-card-section>
-
-        <q-img
-          class="col-5"
+          <q-img
+          class="col-2"
           src="../assets/uni.png"
-          style="max-width: 250px"
+          
         />
       </q-card-section>
-    </q-card>
-    <q-space/>
-    <q-toolbar>
-    </q-toolbar>
+        <q-card-section>
+          <h3>News/Events</h3>
+          <p>Cat 1 will be commenced on Novmber 28 <br/> 2022 </p>
+          
+          <q-btn label="View Timetable" color="primary" rounded @click="timetable = true" />
+          
+          
+          
+          <q-dialog v-model="timetable">
+      <q-card class="my-prof lt-xl">
+        <q-card-section>
+          <div class="text-h6">Timetable</div>
+        </q-card-section>
+         <img :src="time">
 
-    <q-toolbar>
-    <q-card class="my-cre">
-     <p class="text-h6 text-weight-bold"> Payable fees on this academic year</p>
-     <p align="center">Total installment fee is 950000</p>
-     <p align="center">To view installment plan click below</p>
-     <q-toolbar>
-      <q-separator inset spaced/>
-     <q-separator inset spaced/>
-     <q-separator inset spaced/>
-     <q-separator inset spaced/>
-     <q-btn flat @click="installment =true"> View </q-btn>
-     </q-toolbar>
+        <q-card-section class="q-pt-none">
 
-     <q-dialog v-model="installment" persistent transition-show="scale" transition-hide="scale">
-      <q-card class="bg-teal text-white" style="width: 300px" >
-        <p align="center" class="text-h6 text-weight-bold">Installment Fees</p>
-     <p align="center">First installment: 425000  </p>
-     <p align="center">Second installment: 190000</p>
-     <p align="center">Third installment: 285000 </p>
-     <p align="center">Fourth installment: 190000</p>
-     <p align="center"> Total:TZS 950000</p>
-    
-      <q-card-actions align="right" class="bg-white text-teal">
-          <q-btn flat label="OK" v-close-popup />
+         
+
+        </q-card-section>
+
+        <q-card-actions align="right" class="text-primary">
+          <q-btn flat label="Close" v-close-popup />
         </q-card-actions>
       </q-card>
-     </q-dialog>
+    </q-dialog>
+
+              
+      </q-card-section>
     </q-card>
 
-    <q-separator inset spaced/>
+    <div class="q-pa-md row items-start q-gutter-md">
+    <q-card class="my-cad">
+     
+     
+      <q-card-section class="bg-orange">
+       
 
-    <q-card class="my-cre">
-     <p align="center" class="text-h6 text-weight-bold">Registration Fees</p>
-     <p align="center">ID Card : 20000</p>
-     <p align="center">Examination Fee : 100000</p>
-     <p align="center">TCU Quality Assuarance: 20000</p>
-     <p align="center">Total amount is 140000</p>
+       <div class="row no-wrap items-center">
+         <div class="col text-h6 ellipsis font-weight-bold">
+           Payments Details
+         </div>
+         
+       </div>
+
+       
+     </q-card-section>
+
+     <q-card-section class="q-pt-none bg-orange">
+      
+       <div class="text-caption text-black  ">
+        All fees are paid in this account number:<br /> 
+      Account Number: 20510018688 <br/>
+      
+      Account Name: DMI and Collaborators Trust<br/>
+       </div>
+     </q-card-section>
+     
+
+       
+     
     </q-card>
-    </q-toolbar>
+
+    <q-card class="my-cad bg-blue">
+      <q-card-section >
+       
+
+       <div class="row no-wrap items-center">
+         <div class="col text-h6 ellipsis font-weight-bold">
+           Assignments
+         </div>
+         
+       </div>
+
+     </q-card-section>
+
+     <q-card-section class="q-pt-none">
+      
+       <div class="text-caption text-black  ">
+          All assignments are provided by a respective lecturer<br/> 
+      To view your progress click below
+       </div>
+     </q-card-section>
+
+
+      <q-card-actions align="right">
+       
+      </q-card-actions>
+    </q-card>
+
+    <q-card class="my-cad bg-green">
+      <q-card-section>
+       
+
+       <div class="row no-wrap items-center">
+         <div class="col text-h6 ellipsis font-weight-bold">
+           Results
+         </div>
+         
+       </div>
+
+       
+     </q-card-section>
+
+     <q-card-section class="q-pt-none">
+      
+       <div class="text-caption text-black  ">
+         Results are provided at each end of semister. <br/>
+       </div>
+     </q-card-section>
+     </q-card>
+     </div>
          
            
         </q-page>
@@ -190,33 +217,38 @@
 </template>
 
 <script>
-import {  ref } from 'vue'
-import lb from '../assets/download.jpeg'
-import bg from '../assets/logo.svg'
-// import { useStore } from 'vuex'
+import { computed, ref } from 'vue'
+import uni from '../assets/uni.png'
+import time from '../assets/time.jpg'
+import { useStore } from 'vuex'
 
-// const store = useStore()
+const store = useStore()
 
-// const handleClick = () => {
-//   store.dispatch('logout')
-// }
+const handleClick = () => {
+  store.dispatch('logout')
+}
 
 export default {
   setup () {
     return {
       drawer: ref(false),
       miniState: ref(true),
-      bg:bg,
-      lb:lb,
-      installment:ref(false)
+      timetable:ref(false),
+      uni:uni,
+      installment:ref(false),
+      time:time,
+      handleClick,
       
 
-    //   user: computed(()=> store.state.user)
+      user: computed(()=> store.state.user)
     }
   }
 }
 </script>
 <style lang="sass" scoped>
+.my-cad
+  width: 80%
+  max-width: 330px
 .my-cre
   width: 80%
   max-width: 330px

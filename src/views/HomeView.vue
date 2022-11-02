@@ -81,9 +81,9 @@ export default {
       const isPwd = ref(null);
 
        const store = useStore()
-    const router = useRouter()
+     const router = useRouter()
 
-    const handleSubmit = async () =>{
+     const handleSubmit = async () =>{
      try{
      await store.dispatch('login', {
         email: email.value,
@@ -94,10 +94,10 @@ export default {
       error.value = err.message
 
      }
-    }
+     }
 
 
-    return {
+     return {
       password,
       isPwd,
       image:image,

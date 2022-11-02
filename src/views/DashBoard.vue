@@ -4,36 +4,6 @@
       <q-header elevated class="bg-black">
         <q-toolbar class="bg-blue">
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
-          <q-toolbar-title><q-btn :ripple="false" flat><router-link style="text-decoration:none;" to="/home">Home</router-link></q-btn></q-toolbar-title>
-          <q-space/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          
-          <q-space/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-space/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-separator inset spaced/>
-          <q-space/>
-
-          <q-toolbar-title><q-btn @click="handleClick" :ripple="false" flat><router-link style="text-decoration:none;"  to="/">Sign out</router-link></q-btn></q-toolbar-title>
         </q-toolbar>
       </q-header>
 <q-card style="max-width: 300px">
@@ -95,27 +65,23 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item active clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="image" color="blue" />
+                <router-link to="/">
+                <q-icon @click="handleClick" color="blue" name="logout" />
+                </router-link>
               </q-item-section>
 
               <q-item-section>
-                Project Images
+                <router-link @click="handleClick" style="text-decoration:none;" to="/">
+                Sign Out
+                </router-link>
               </q-item-section>
             </q-item>
 
-            <q-separator />
 
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="drafts" />
-              </q-item-section>
+            
 
-              <q-item-section>
-                Drafts
-              </q-item-section>
-            </q-item>
           </q-list>
         </q-scroll-area>
       </q-drawer>
@@ -125,16 +91,22 @@
         <q-page >
         <q-card class="my-card" flat bordered>
       <q-card-section horizontal>
+          <q-img
+          class="col-2"
+          src="../assets/uni.png"
+          
+        />
+      </q-card-section>
         <q-card-section>
           <h1 class="text-h3">Your Profile</h1>
-          <p>All members credentials are found in this section and all things required are conntained in here, all people having membership are able to access everything found in here freely</p>
-          <q-toolbar>
+          <p>All members credentials are found in this section</p>
+          
           <q-btn label="Edit Profile" color="primary" rounded @click="inception = true" />
-          <q-separator inset spaced/>
+          
           
           <q-btn @click="profile = true" rounded>View profile </q-btn>
           <q-dialog v-model="profile">
-      <q-card class="my-prof">
+      <q-card class="my-prof lt-xl">
         <q-card-section>
           <div class="text-h6">Profile</div>
         </q-card-section>
@@ -172,7 +144,6 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-          </q-toolbar>
 
               <q-dialog v-model="inception">
       <q-card class="my-prof">
@@ -233,72 +204,98 @@
 
           
 
-        </q-card-section>
+       
 
-        <q-img
-          class="col-5"
-          src="../assets/uni.png"
-          style="max-width: 250px"
-        />
+      
       </q-card-section>
     </q-card>
 
-    
-    <q-toolbar flat>
+    <div class="q-pa-md row items-start q-gutter-md">
+    <q-card class="my-cad">
+     
+     
+      <q-card-section class="bg-orange">
+       
+
+       <div class="row no-wrap items-center">
+         <div class="col text-h6 ellipsis font-weight-bold">
+           Payments Details
+         </div>
+         
+       </div>
+
+       
+     </q-card-section>
+
+     <q-card-section class="q-pt-none bg-orange">
       
-    </q-toolbar>
+       <div class="text-caption text-black  ">
+        All fees are paid in this account number:<br /> 
+      Account Number: 20510018688 <br/>
+      
+      Account Name: DMI and Collaborators Trust<br/>
+       </div>
+     </q-card-section>
+     
 
-<q-toolbar>
-    <q-card class="my-cre bg-orange">
-      <p align="center" class="text-h4 text-black">Payment Details</p>
-      <h1 class="text-h6 text-white" align="center">All fees are paid in this account number:</h1> 
-      <p align="center">Account Number: 20510018688</p>
-      <p align="center">
-      Account Name: DMI and Collaborators Trust
-      </p>
-      <q-space />
-      <q-toolbar>
-        <q-separator inset spaced />
-        <q-separator inset spaced />
-        <q-separator inset spaced />
-        <q-separator inset spaced />
        
-     <q-btn align="center" class="text-white" color="green"  rounded>View</q-btn>
-      </q-toolbar>
+     
     </q-card>
 
-    <q-separator inset spaced />
-
-    <q-card class="my-cre bg-blue" >
-      <p align="center" class="text-h4 text-white">Assignments</p>
-      <h1 class="text-h6" align="center">All assignments are provided by a respective lecturer </h1> 
-      <p align="center">To view your progress click below</p>
-      <q-space />
-      <q-toolbar>
-        <q-separator inset spaced />
-        <q-separator inset spaced />
-        <q-separator inset spaced />
-        <q-separator inset spaced />
+    <q-card class="my-cad bg-blue">
+      <q-card-section >
        
-     <q-btn align="center" class="text-pink" color="yellow"  rounded>View</q-btn>
-      </q-toolbar>
-    </q-card>
-    <q-separator inset spaced/>
 
-    <q-card class="my-cre bg-pink" >
-      <p align="center" class="text-h4 text-orange">Results</p>
-      <h1 class="text-h6" align="center">Results are provided at each end of semister. <br/></h1><p align="center">To view your results click below</p> 
-      <q-space />
-      <q-toolbar>
-        <q-separator inset spaced />
-        <q-separator inset spaced />
-        <q-separator inset spaced />
-        <q-separator inset spaced />
+       <div class="row no-wrap items-center">
+         <div class="col text-h6 ellipsis font-weight-bold">
+           Assignments
+         </div>
+         
+       </div>
+
+     </q-card-section>
+
+     <q-card-section class="q-pt-none">
+      
+       <div class="text-caption text-black  ">
+          All assignments are provided by a respective lecturer<br/> 
+      To view your progress click below
+       </div>
+     </q-card-section>
+
+
+      <q-card-actions align="right">
        
-     <q-btn align="center" class="text-red" color="black"  rounded>View</q-btn>
-      </q-toolbar>
+      </q-card-actions>
     </q-card>
-</q-toolbar>
+
+    <q-card class="my-cad bg-green">
+      <q-card-section>
+       
+
+       <div class="row no-wrap items-center">
+         <div class="col text-h6 ellipsis font-weight-bold">
+           Results
+         </div>
+         
+       </div>
+
+       
+     </q-card-section>
+
+     <q-card-section class="q-pt-none">
+      
+       <div class="text-caption text-black  ">
+         Results are provided at each end of semister. <br/>
+       </div>
+     </q-card-section>
+     </q-card>
+     </div>
+
+    
+    
+
+
  
         </q-page>
       </q-page-container>
@@ -310,18 +307,11 @@
 import {  ref } from 'vue'
 import lb from '../assets/download.jpeg'
 import bg from '../assets/logo.svg'
-// import { useStore } from 'vuex'
 
-// const store = useStore()
-
-// const handleClick = () => {
-//   store.dispatch('logout')
-// }
 
 
    const saveProfile = () =>{
-    // console.log('saved')
-    // store.dispatch('saved')
+   
    }
 
 export default {
@@ -345,6 +335,9 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+.my-cad
+  width: 100%
+  max-width: 370px
 .my-cre
   width: 50%
   max-width: 400px
