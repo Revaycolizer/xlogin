@@ -112,6 +112,7 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
+         
          <q-input label="name" >
           <template v-slot:prepend>
             <q-icon name="person"/>
@@ -152,25 +153,28 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-         <q-input label="name" >
+           <q-uploader v-model="picture" label="Profile Picture" :factory="factoryFn"
+          multiple
+          style="max-width:280px;"/>
+         <q-input v-model="name" label="name" >
           <template v-slot:prepend>
             <q-icon name="person"/>
           </template>
          </q-input>
 
-         <q-input label="registration number" >
+         <q-input v-model="reg" label="registration number" >
           <template v-slot:prepend>
             <q-icon name="laptop"/>
           </template>
          </q-input>
 
-         <q-input label="course" >
+         <q-input v-model="course" label="course" >
           <template v-slot:prepend>
             <q-icon name="book"/>
           </template>
          </q-input>
          
-         <q-input label="Phone number" >
+         <q-input v-model="phone" label="Phone number" >
           <template v-slot:prepend>
             <q-icon name="call"/>
           </template>
@@ -180,7 +184,7 @@
         </q-card-section>
 
         <q-card-actions align="right" class="text-primary">
-          <q-btn flat label="Save Profile" @click="saveProfile" />
+          <q-btn flat label="Save Profile" @click="writeNewPost" />
           <q-btn flat label="Close" v-close-popup />
         </q-card-actions>
       </q-card>
@@ -242,7 +246,7 @@
      
     </q-card>
 
-    <q-card class="my-cad bg-blue">
+    <q-card class="my-asz bg-blue">
       <q-card-section >
        
 
@@ -268,8 +272,8 @@
        
       </q-card-actions>
     </q-card>
-
-    <q-card class="my-cad bg-green">
+    
+    <q-card class="my-res bg-green" clickable>
       <q-card-section>
        
 
@@ -286,7 +290,8 @@
      <q-card-section class="q-pt-none">
       
        <div class="text-caption text-black  ">
-         Results are provided at each end of semister. <br/>
+        Each academic year consists of two (2) semisters<br/>
+         To view your progress click below
        </div>
      </q-card-section>
      </q-card>
@@ -310,21 +315,41 @@ import bg from '../assets/logo.svg'
 
 
 
-   const saveProfile = () =>{
-   
-   }
+ 
 
 export default {
   setup () {
+     const name = ref('')
+    const reg = ref('')
+    const phone = ref('')
+    const course = ref('')
+    const picture = ref('')
+
+    const factoryFn =()=>{
+      return{
+        url: 'http://localhost:8080/upload',
+        method: 'POST'
+      }
+    }
+
+      const writeNewPost = () =>{
+      console.log('saved')
+   }
+
     return {
       drawer: ref(false),
       miniState: ref(true),
       bg:bg,
       lb:lb,
+      name,
+      reg,
+      phone,
+      course,
+      picture,
       inception: ref(false),
       secondDialog: ref(false),
       profile: ref(false),
-      saveProfile
+      writeNewPost,factoryFn
 
     
       
@@ -335,9 +360,17 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+.my-res
+  height: 140px
+  width: 80%
+  max-width: 420px
+.my-asz
+  height: 140px
+  width: 80%
+  max-width: 420px
 .my-cad
-  width: 100%
-  max-width: 370px
+  width: 80%
+  max-width: 420px
 .my-cre
   width: 50%
   max-width: 400px

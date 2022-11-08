@@ -105,7 +105,7 @@
      <q-card-section class="q-pt-none bg-orange ">
       
        <div class="text-caption text-black " align="center">
-       <a href="#">COMPUTER SCIENCE ENGINEERING</a>
+       <a href="https://drive.google.com/folderview?id=11FGS5Os51ufMKOW2SkA0TUhZPnuHkPRw">COMPUTER SCIENCE ENGINEERING</a>
        </div>
      </q-card-section>
     </q-card>

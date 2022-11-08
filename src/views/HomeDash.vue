@@ -159,7 +159,7 @@
      
     </q-card>
 
-    <q-card class="my-cad bg-blue">
+    <q-card class="my-asz bg-blue">
       <q-card-section >
        
 
@@ -186,7 +186,7 @@
       </q-card-actions>
     </q-card>
 
-    <q-card class="my-cad bg-green">
+    <q-card class="my-res bg-green">
       <q-card-section>
        
 
@@ -246,9 +246,17 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+.my-res
+  height: 140px
+  width: 80%
+  max-width: 420px
+.my-asz
+  height: 140px
+  width: 80%
+  max-width: 420px
 .my-cad
   width: 80%
-  max-width: 330px
+  max-width: 420px
 .my-cre
   width: 80%
   max-width: 330px

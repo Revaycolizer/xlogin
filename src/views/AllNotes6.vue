@@ -249,18 +249,12 @@
        <div class="row no-wrap items-center" >
          <div class="col text-h6 ellipsis font-weight-bold">
          </div>
-         
        </div>
-
-       
      </q-card-section>
-
      <q-card-section class="q-pt-none bg-white">
-      
        <div align="center" class="text-caption text-black bg-white ">
          <a href="#">MECHANICAL ENGINEERING</a>
        </div>
-       
      </q-card-section>
      </q-card>
  

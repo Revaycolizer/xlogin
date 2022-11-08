@@ -46,7 +46,6 @@ const store = createStore({
             }else {
               throw new Error('could not complete login')
             }
-
         },
         async logout(context){
             console.log('logout action')
