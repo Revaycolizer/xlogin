@@ -86,30 +86,166 @@
 
       <q-page-container>
         <q-page >
-        <q-card class="my-card" flat>
-      <q-card-section horizontal>
-        <q-card-section>
-          <h1 class="text-h3">Notes</h1>
-          <p>Studying materials are available in the library</p>
-          <p>For notes and module insight click below</p>
-          <q-btn @click="notes=true" flat> View</q-btn>
-        </q-card-section>
-      </q-card-section>
+          
+          <q-card flat class="my-fom" style="padding-top:40px;">
+            <p align="center" class="text-h3 font-weight-high">First Year</p>
+          <div class="q-pa-md row items-start q-gutter-md" style="padding-left:50px;">
+          <q-card class="my-cad" >
+           <q-card-section class="bg-orange">
+          <div class="row no-wrap items-center">
+           <div class="col text-h5 ellipsis font-weight-bold">
+           Semester 1
+           </div>
+         
+            </div>
+         </q-card-section>
+
+        <q-card-section class="q-pt-none bg-orange">
+      
+       <div class="text-caption text-black  ">
+        <p class="text-h6">
+       To view Notes click below</p>
+       <q-btn>
+      <router-link to="/allnotes" style="text-decoration:none;">
+      View</router-link></q-btn>
+       </div>
+     </q-card-section>
     </q-card>
 
-    <q-dialog v-model="notes" transition-show="scale" transition-hide="scale">
-      <q-card class="my-cad">
-      <q-card-section>
-        <p>CSE</p>
-        <template v-slot:prepend>
-        <q-icon name="laptop"/>
-        </template>
-        
-      </q-card-section>
-      </q-card>
+   <q-card class="my-cad bg-blue" >
+           <q-card-section>
+          <div class="row no-wrap items-center">
+           <div class="col text-h5 ellipsis font-weight-bold">
+           Semester 2
+           </div>
+         
+            </div>
+         </q-card-section>
 
-    </q-dialog>       
+        <q-card-section class="q-pt-none ">
+      
+       <div class="text-caption text-black  ">
+        <p class="text-h6">
+       To view Notes click below</p>
+       <q-btn>
+      <router-link to="/allnotes2" style="text-decoration:none;">
+      View</router-link></q-btn>
+       </div>
+     </q-card-section>
+    </q-card>
+
+     </div>
+     
+          </q-card>
+
+           <div style="padding-bottom:30px;">
+           <q-card flat class="my-fom" style="padding-top:40px;">
+            <p align="center" class="text-h3 font-weight-high">Second Year</p>
+           <div class="q-pa-md row items-start q-gutter-md" style="padding-left:50px;">
+           <q-card class="my-cad" >
+     
+     
+           <q-card-section class="bg-orange">
+           <div class="row no-wrap items-center">
+           <div class="col text-h6 ellipsis font-weight-bold">
+           Semester 1
+           </div>
+            </div>
+           </q-card-section>
+
+           <q-card-section class="q-pt-none bg-orange">
+      
+           <div class="text-caption text-black  ">
+           <p class="text-h6">
+           To view Notes click below</p>
+            <q-btn>
+           <router-link to="/allnotes3" style="text-decoration:none;">
+            View</router-link></q-btn>
+           </div>
+           </q-card-section>
+           </q-card>
+
+           <q-card class="my-cad bg-blue" >
+           <q-card-section>
+           <div class="row no-wrap items-center">
+           <div class="col text-h5 ellipsis font-weight-bold">
+           Semester 2
+           </div>
+         
+            </div>
+           </q-card-section>
+
+           <q-card-section class="q-pt-none ">
+      
+           <div class="text-caption text-black  ">
+           <p class="text-h6">
+           To view Notes click below</p>
+           <q-btn>
+           <router-link to="/allnotes4" style="text-decoration:none;">
+            View</router-link></q-btn>
+            </div>
+            </q-card-section>
+            </q-card>
+             </div>
+
+              <q-card flat class="my-fom" style="padding-top:40px;">
+            <p align="center" class="text-h3 font-weight-high">Third Year</p>
+          <div class="q-pa-md row items-start q-gutter-md" style="padding-left:50px;">
+          <q-card class="my-cad" >
+           <q-card-section class="bg-orange">
+          <div class="row no-wrap items-center">
+           <div class="col text-h5 ellipsis font-weight-bold">
+           Semester 1
+           </div>
+         
+            </div>
+         </q-card-section>
+
+        <q-card-section class="q-pt-none bg-orange">
+      
+       <div class="text-caption text-black  ">
+        <p class="text-h6">
+       To view Notes click below</p>
+       <q-btn>
+      <router-link to="/allnotes5" style="text-decoration:none;">
+      View</router-link></q-btn>
+       </div>
+     </q-card-section>
+    </q-card>
+
+   <q-card class="my-cad bg-blue" >
+           <q-card-section>
+          <div class="row no-wrap items-center">
+           <div class="col text-h5 ellipsis font-weight-bold">
+           Semester 2
+           </div>
+         
+            </div>
+         </q-card-section>
+
+        <q-card-section class="q-pt-none ">
+      
+       <div class="text-caption text-black  ">
+        <p class="text-h6">
+       To view Notes click below</p>
+       <q-btn>
+      <router-link to="/allnotes6" style="text-decoration:none;">
+      View</router-link></q-btn>
+       </div>
+     </q-card-section>
+    </q-card>
+
+     </div>
+     
+          </q-card>
+
+            
+
+     
+             </q-card>
+             </div>
         </q-page>
+        
       </q-page-container>
     </q-layout>
   </div>
@@ -132,6 +268,7 @@ export default {
     return {
       drawer: ref(false),
       miniState: ref(true),
+      sem:ref(false),
       bg:bg,
       lb:lb,
       handleClick,
@@ -144,9 +281,12 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+.my-fom
+ width: 100%
+  max-width: 450px
 .my-cad
   width: 100%
-  max-width: 450px
+  max-width: 600px
 .my-card
   width: 100%
   max-width: 1450px

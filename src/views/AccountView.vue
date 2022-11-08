@@ -8,7 +8,6 @@
           <img :src="person"/>
           </q-card>
           <q-card align="center" >
-            <!-- <div v-if="error" class="alert alert-danger">{{error}}</div> -->
             <q-form action="#" @submit.prevent="handleSubmit" style="max-width:450px">
               
        <q-input

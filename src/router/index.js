@@ -6,6 +6,13 @@ import HomeDash from '../views/HomeDash.vue'
 import DashBoard from '../views/DashBoard.vue'
 import AccountView from '../views/AccountView.vue'
 import NotesView from '../views/NotesView.vue'
+import AllNotes from '../views/AllNotes.vue'
+import AllNotes2 from '../views/AllNotes2.vue'
+import AllNotes3 from '../views/AllNotes3.vue'
+import AllNotes4 from '../views/AllNotes4.vue'
+import AllNotes5 from '../views/AllNotes5.vue'
+import AllNotes6 from '../views/AllNotes6.vue'
+
 
 const routes = [
   {
@@ -17,6 +24,36 @@ const routes = [
     path: '/help',
     name: 'help',
     component: HelpView
+  },
+  {
+    path: '/allnotes',
+    name: 'allnotes',
+    component: AllNotes
+  },
+  {
+    path: '/allnotes2',
+    name: 'allnotes2',
+    component: AllNotes2
+  },
+  {
+    path: '/allnotes3',
+    name: 'allnotes3',
+    component: AllNotes3
+  },
+  {
+    path: '/allnotes4',
+    name: 'allnotes4',
+    component: AllNotes4
+  },
+  {
+    path: '/allnotes5',
+    name: 'allnotes5',
+    component: AllNotes5
+  },
+  {
+    path: '/allnotes6',
+    name: 'allnotes6',
+    component: AllNotes6
   },
   {
     path: '/notes',
