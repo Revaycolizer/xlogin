@@ -249,14 +249,14 @@ export default {
 .my-res
   height: 140px
   width: 80%
-  max-width: 420px
+  max-width: 350px
 .my-asz
   height: 140px
   width: 80%
-  max-width: 420px
+  max-width: 350px
 .my-cad
   width: 80%
-  max-width: 420px
+  max-width: 350px
 .my-cre
   width: 80%
   max-width: 330px

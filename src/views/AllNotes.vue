@@ -318,31 +318,31 @@ export default {
 <style lang="sass" scoped>
 .my-inf
   width: 80%
-  max-width: 330px
+  max-width: 270px
 .my-ind
   width: 80%
-  max-width: 330px
+  max-width: 247px
 .my-mec
   width: 80%
-  max-width: 328px
+  max-width: 269px
 .my-ece
   width: 80%
-  max-width: 330px
+  max-width: 250px
 .my-ee
   width: 80%
-  max-width: 330px
+  max-width: 250px
 .my-me
   width: 80%
-  max-width: 310px
+  max-width: 255px
 .my-civ
   width: 80%
-  max-width: 330px
+  max-width: 272px
 .my-cad
   width: 80%
-  max-width: 330px
+  max-width: 250px
 .my-cre
   width: 80%
-  max-width: 330px
+  max-width: 250px
 .my-card
   width: 100%
   max-width: 1450px

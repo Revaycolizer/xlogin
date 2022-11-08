@@ -286,7 +286,7 @@ export default {
   max-width: 450px
 .my-cad
   width: 100%
-  max-width: 600px
+  max-width: 520px
 .my-card
   width: 100%
   max-width: 1450px
