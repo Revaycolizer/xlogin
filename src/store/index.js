@@ -11,6 +11,7 @@ import {
 
 
 
+
 const store = createStore({
     state: {
         user:null,
@@ -50,7 +51,7 @@ const store = createStore({
         async logout(context){
             console.log('logout action')
 
-            await signOut(auth)
+            await signOut(auth) 
             context.commit('setUser', null)
         }
     }

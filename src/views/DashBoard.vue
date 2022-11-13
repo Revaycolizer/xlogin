@@ -101,10 +101,10 @@
           <h1 class="text-h3">Your Profile</h1>
           <p>All members credentials are found in this section</p>
           
-          <q-btn label="Edit Profile" color="primary" rounded @click="inception = true" />
+          <q-btn label="View Profile" color="primary" rounded @click="inception = true" />
           
           
-          <q-btn @click="profile = true" rounded>View profile </q-btn>
+         
           <q-dialog v-model="profile">
       <q-card class="my-prof lt-xl">
         <q-card-section>
@@ -141,40 +141,41 @@
         </q-card-section>
 
         <q-card-actions align="right" class="text-primary">
+          <q-btn flat label="Save Profile" @click="writeNewPost" />
           <q-btn flat label="Close" v-close-popup />
         </q-card-actions>
       </q-card>
     </q-dialog>
 
               <q-dialog v-model="inception">
-      <q-card class="my-prof">
+      <q-card class="my-profi">
         <q-card-section>
           <div class="text-h6">Profile</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-           <q-uploader v-model="picture" label="Profile Picture" :factory="factoryFn"
+           <!-- <q-uploader v-model="picture" label="Profile Picture" :factory="factoryFn"
           multiple
-          style="max-width:280px;"/>
-         <q-input v-model="name" label="name" >
+          style="max-width:280px;"/> -->
+         <q-input :v-model="name" label="name" disable>
           <template v-slot:prepend>
             <q-icon name="person"/>
           </template>
          </q-input>
 
-         <q-input v-model="reg" label="registration number" >
+         <q-input :v-model="reg" label="registration number" disable>
           <template v-slot:prepend>
             <q-icon name="laptop"/>
           </template>
          </q-input>
 
-         <q-input v-model="course" label="course" >
+         <q-input :v-model="course" label="course" disable>
           <template v-slot:prepend>
             <q-icon name="book"/>
           </template>
          </q-input>
          
-         <q-input v-model="phone" label="Phone number" >
+         <q-input :v-model="phone" label="Phone number" disable>
           <template v-slot:prepend>
             <q-icon name="call"/>
           </template>
@@ -184,33 +185,14 @@
         </q-card-section>
 
         <q-card-actions align="right" class="text-primary">
-          <q-btn flat label="Save Profile" @click="writeNewPost" />
+          <q-btn flat label="Edit Profile" @click="profile = true" />
           <q-btn flat label="Close" v-close-popup />
         </q-card-actions>
       </q-card>
     </q-dialog>
 
-    <q-dialog v-model="secondDialog" persistent transition-show="scale" transition-hide="scale">
-      <q-card class="bg-teal text-white" style="width: 300px">
-        <q-card-section>
-          <div class="text-h6">Persistent</div>
-        </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          Click/Tap on the backdrop.
-        </q-card-section>
 
-        <q-card-actions align="right" class="bg-white text-teal">
-          <q-btn flat label="OK" v-close-popup />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-
-          
-
-       
-
-      
       </q-card-section>
     </q-card>
 
@@ -375,6 +357,9 @@ export default {
   width: 50%
   max-width: 400px
 .my-prof
+  width: 100%
+  max-width: 650px
+  .my-profi
   width: 100%
   max-width: 450px
 .my-card
