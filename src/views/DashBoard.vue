@@ -104,48 +104,55 @@
           <q-btn label="View Profile" color="primary" rounded @click="inception = true" />
           
           
-         
+           
           <q-dialog v-model="profile">
+            
       <q-card class="my-prof lt-xl">
-        <q-card-section>
+        <q-form style="max-width:450px;" align="center" @submit.prevent="addTodo">
+        <!-- <q-card-section> -->
           <div class="text-h6">Profile</div>
-        </q-card-section>
+        <!-- </q-card-section> -->
 
-        <q-card-section class="q-pt-none">
+        <!-- <q-card-section class="q-pt-none"> -->
          
-         <q-input label="name" >
+         <q-input v-model="name" label="name" >
           <template v-slot:prepend>
             <q-icon name="person"/>
           </template>
          </q-input>
 
-         <q-input label="registration number" >
+         <q-input v-model="reg" label="registration number" >
           <template v-slot:prepend>
             <q-icon name="laptop"/>
           </template>
          </q-input>
 
-         <q-input label="course" >
+         <q-input v-model="course" label="course" >
           <template v-slot:prepend>
             <q-icon name="book"/>
           </template>
          </q-input>
          
-         <q-input label="Phone number" >
+         <q-input v-model="phone" label="Phone number" >
           <template v-slot:prepend>
             <q-icon name="call"/>
           </template>
          </q-input>
          
 
-        </q-card-section>
+        <!-- </q-card-section>
 
         <q-card-actions align="right" class="text-primary">
-          <q-btn flat label="Save Profile" @click="writeNewPost" />
+          <q-btn type="submit" flat label="Save Profile"/>
           <q-btn flat label="Close" v-close-popup />
         </q-card-actions>
+      </q-card> -->
+           <q-btn type="submit" color="green">Save Profile</q-btn>
+            </q-form>
       </q-card>
+      
     </q-dialog>
+           
 
               <q-dialog v-model="inception">
       <q-card class="my-profi">
@@ -157,27 +164,31 @@
            <!-- <q-uploader v-model="picture" label="Profile Picture" :factory="factoryFn"
           multiple
           style="max-width:280px;"/> -->
-         <q-input :v-model="name" label="name" disable>
+         <q-input :v-model="name"  disable>
           <template v-slot:prepend>
             <q-icon name="person"/>
+            {{ name }}
           </template>
          </q-input>
 
-         <q-input :v-model="reg" label="registration number" disable>
+         <q-input :v-model="reg"  disable>
           <template v-slot:prepend>
             <q-icon name="laptop"/>
+            {{ reg }}
           </template>
          </q-input>
 
-         <q-input :v-model="course" label="course" disable>
+         <q-input :v-model="course" disable>
           <template v-slot:prepend>
             <q-icon name="book"/>
+            {{ course }}
           </template>
          </q-input>
          
-         <q-input :v-model="phone" label="Phone number" disable>
+         <q-input :v-model="phone" disable>
           <template v-slot:prepend>
             <q-icon name="call"/>
+            {{ phone }}
           </template>
          </q-input>
          
@@ -291,13 +302,14 @@
 </template>
 
 <script>
-import {  ref } from 'vue'
+import {  ref, onMounted } from 'vue'
 import lb from '../assets/download.jpeg'
 import bg from '../assets/logo.svg'
+// import { v4 as uuidv4} from 'uuid'
+import { db } from '@/db'
+import { collection,  onSnapshot, addDoc } from '@firebase/firestore'
 
 
-
- 
 
 export default {
   setup () {
@@ -307,15 +319,64 @@ export default {
     const course = ref('')
     const picture = ref('')
 
-    const factoryFn =()=>{
-      return{
-        url: 'http://localhost:8080/upload',
-        method: 'POST'
-      }
-    }
+    const todos = ref([])
 
-      const writeNewPost = () =>{
-      console.log('saved')
+    onMounted(async()=>{
+      // const querySnapshot = await getDocs(collection(db,
+      // 'profile'))
+      // let fbProfiles = []
+      // querySnapshot.forEach((doc) =>{
+      //   console.log(doc.id, "=>", doc.data())
+      //   const todo = {
+      //     id: doc.id,
+      //     name: doc.data().name,
+      //     reg: doc.data().reg,
+      //     phone: doc.data().phone,
+      //     course: doc.data().course
+      //   }
+      //   fbProfiles.push(todo)
+      // })
+
+      onSnapshot(collection(db, 'profile'), (querySnapshot)=>{
+        const fbProfiles= []
+        querySnapshot.forEach((doc)=>{
+          const todo = {
+          // id: doc.id,
+          name: doc.data().name,
+          reg: doc.data().reg,
+          phone: doc.data().phone,
+          course: doc.data().course
+        }
+        fbProfiles.push(todo)
+        })
+        todos.value =fbProfiles
+      })
+    })
+    
+
+      const addTodo = () =>{
+
+        addDoc(collection(db, 'profile'),{
+          name: name.value,
+          course: course.value,
+        phone: phone.value,
+        reg: reg.value,
+        })
+
+        name.value=''
+        course.value=''
+        phone.value=''
+        reg.value=''
+      // console.log('saved')
+      // const newTodo = {
+      //   // id:uuidv4(),
+      //   course: course.value,
+      //   phone: phone.value,
+      //   reg: reg.value,
+      //   name: name.value
+      // }
+      //  console.log('newTodo:', newTodo)
+      //  todos.value.unshift( name, reg, phone, course)
    }
 
     return {
@@ -331,7 +392,7 @@ export default {
       inception: ref(false),
       secondDialog: ref(false),
       profile: ref(false),
-      writeNewPost,factoryFn
+      addTodo,
 
     
       
@@ -359,7 +420,7 @@ export default {
 .my-prof
   width: 100%
   max-width: 650px
-  .my-profi
+.my-profi
   width: 100%
   max-width: 450px
 .my-card

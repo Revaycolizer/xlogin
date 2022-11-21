@@ -1,6 +1,4 @@
-<template>
-
-  
+<template> 
         <q-card class="card"
         align="center" flat>
           <h5>Register</h5>
@@ -9,6 +7,47 @@
           </q-card>
           <q-card align="center" >
             <q-form action="#" @submit.prevent="handleSubmit" style="max-width:450px">
+              <q-input
+              filled
+              v-model="displayName"
+              label="Your username"
+              hint="fullname"
+              
+              lazy-rules
+              :rules="[ val => val && val.length > 0 || 'Please type something']"
+              >
+              <template v-slot:prepend>
+                <q-icon name="person" />
+              </template>
+              </q-input>
+
+                <q-input
+              filled
+              v-model="phoneNumber"
+              label="Your phonenumber"
+              hint="phonenumber"
+              
+              lazy-rules
+              :rules="[ val => val && val.length > 0 || 'Please type something']"
+              >
+              <template v-slot:prepend>
+                <q-icon name="call" />
+              </template>
+              </q-input>
+
+               <q-input
+              filled
+              v-model="course"
+              label="Your course"
+              hint="Course"
+              
+              lazy-rules
+              :rules="[ val => val && val.length > 0 || 'Please type something']"
+              >
+              <template v-slot:prepend>
+                <q-icon name="book" />
+              </template>
+              </q-input>
               
        <q-input
         filled
@@ -64,6 +103,9 @@ export default {
  setup() {
    
     const email = ref('')
+    const course = ref('')
+    const displayName = ref('')
+    const phoneNumber = ref('')
     const password = ref('')
     const error = ref(null)
     const isPwd = ref(null)
@@ -77,7 +119,10 @@ export default {
      try{
      await store.dispatch('signup', {
         email: email.value,
-        password: password.value
+        password: password.value,
+        displayName: displayName.value,
+        phoneNumber: phoneNumber.value,
+        course: course.value
       })
       router.push('/home')
      } catch (err){
@@ -87,7 +132,7 @@ export default {
     }
     
 
-    return {  handleSubmit,email, password, error, isPwd, person}
+    return {  handleSubmit,email, password, error, isPwd, person, displayName, phoneNumber,course}
   }
 };
 </script>

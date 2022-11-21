@@ -28,10 +28,10 @@ const store = createStore({
         }
     },
     actions: {
-       async signup(context, {email, password}){
+       async signup(context, {email, password, displayName, phoneNumber}){
             console.log('signup action')
 
-          const res = await createUserWithEmailAndPassword(auth, email, password)
+          const res = await createUserWithEmailAndPassword(auth, email, password, displayName, phoneNumber)
           if(res){
             context.commit('setUser', res.user)
           }else {
